@@ -1,6 +1,6 @@
-# Next.js Boilerplate Template
+# Next.js Boilerplate
 
-Next.js 16 + styled-components 기반 보일러플레이트
+Next.js 16 + TypeScript + styled-components 보일러플레이트
 
 ## 기술 스택
 
@@ -8,15 +8,17 @@ Next.js 16 + styled-components 기반 보일러플레이트
 |------|------|
 | Framework | Next.js 16 (Pages Router) |
 | Language | TypeScript 5.9 |
-| Styling | styled-components 6, styled-normalize |
-| Linting | ESLint, Prettier, GTS |
+| Styling | styled-components 6 |
+| Linting | ESLint 9 (Flat Config) |
+| Formatting | Prettier |
 | Git Hooks | Husky, Commitlint |
+| Package Manager | pnpm (필수) |
 
 ## 시작하기
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 http://localhost:3000 에서 확인
@@ -25,50 +27,31 @@ http://localhost:3000 에서 확인
 
 | 명령어 | 설명 |
 |--------|------|
-| `npm run dev` | 개발 서버 실행 |
-| `npm run build` | 프로덕션 빌드 |
-| `npm start` | 프로덕션 서버 실행 |
-| `npm run lint` | 린트 검사 |
-| `npm run lint:fix` | 린트 자동 수정 |
-| `npm run format` | Prettier 포맷팅 |
+| `pnpm dev` | 개발 서버 실행 |
+| `pnpm build` | 프로덕션 빌드 |
+| `pnpm start` | 프로덕션 서버 실행 |
+| `pnpm lint` | 린트 검사 |
+| `pnpm lint:fix` | 린트 자동 수정 |
+| `pnpm format` | Prettier 포맷팅 |
 
 ## 디렉토리 구조
 
 ```
-├── .husky/              # Husky 라이브러리 관련 설정
-├── components/          # 컴포넌트 파일, 유닛 테스트 파일
-├── pages/               # 페이지 파일, 엔드포인트 테스트 파일
-│   ├── _app.tsx
-│   ├── _document.tsx
-│   └── index.tsx
-├── styles/              # 글로벌 스타일, 테마 파일 (styled-components)
-│   ├── global-styles.ts
-│   ├── styled.d.ts
-│   └── theme.ts
-├── .babelrc
-├── .eslintrc.json
-├── .prettierrc.js
-├── commitlint.config.js
-├── package.json
-└── tsconfig.json
+├── .husky/              # Git Hooks 설정
+│   ├── pre-commit       # 커밋 전 lint 실행
+│   └── commit-msg       # 커밋 메시지 검증
+├── pages/               # 페이지 라우팅
+│   ├── _app.tsx         # 앱 진입점 (테마, 글로벌 스타일)
+│   ├── _document.tsx    # HTML 문서 (SSR 설정)
+│   └── index.tsx        # 메인 페이지
+├── styles/              # 스타일 설정
+│   ├── global-styles.ts # 글로벌 스타일
+│   ├── styled.d.ts      # 테마 타입 정의
+│   └── theme.ts         # 테마 설정
+├── eslint.config.mjs    # ESLint 9 설정
+├── commitlint.config.js # 커밋 메시지 규칙
+└── package.json
 ```
-
-| 디렉토리 | 설명 |
-|----------|------|
-| `.husky/` | Husky 라이브러리 관련 설정 |
-| `components/` | 컴포넌트 파일, 유닛 테스트 파일 |
-| `pages/` | 페이지 파일, 엔드포인트 테스트 파일 |
-| `styles/` | 글로벌 스타일, 테마 파일 (styled-components) |
-
-## 파일 설정
-
-| 파일 | 설명 |
-|------|------|
-| `pages/_app.tsx` | styled-components의 global-style, theme 설정 |
-| `pages/_document.tsx` | styled-components의 SSR 사용 위한 설정 |
-| `.babelrc` | styled-components의 SSR 사용 위한 설정 |
-| `.eslintrc.json`, `.prettierrc.js` | GTS(Google TypeScript) 코드 스타일 설정 |
-| `commitlint.config.js` | Commitlint 컨벤션 설정 |
 
 ## 테마 사용
 
@@ -76,9 +59,9 @@ http://localhost:3000 에서 확인
 import styled from 'styled-components';
 
 const Box = styled.div`
-  background: ${({theme}) => theme.colors.background};
-  color: ${({theme}) => theme.colors.text};
-  padding: ${({theme}) => theme.spacing.md};
+  background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
+  padding: ${({ theme }) => theme.spacing.md};
 `;
 ```
 
@@ -102,17 +85,24 @@ theme.spacing.xl  // 32px
 
 ## 커밋 규칙
 
-Conventional Commits 형식 필수
+`type(scope): 설명` 형식 필수
 
+```bash
+# 예시
+feat(auth): 로그인 기능 추가
+fix(api): 응답 파싱 오류 수정
+docs(readme): 설치 가이드 추가
 ```
-feat: 새로운 기능
-fix: 버그 수정
-docs: 문서 수정
-style: 코드 스타일 변경
-refactor: 리팩토링
-test: 테스트 추가
-chore: 빌드, 설정 변경
-```
+
+| Type | 설명 |
+|------|------|
+| feat | 새로운 기능 |
+| fix | 버그 수정 |
+| docs | 문서 수정 |
+| style | 코드 스타일 변경 |
+| refactor | 리팩토링 |
+| test | 테스트 추가 |
+| chore | 빌드, 설정 변경 |
 
 ## 라이선스
 
