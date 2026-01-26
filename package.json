@@ -24,12 +24,15 @@
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
     "@types/styled-components": "^5.1.36",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.5.5",
     "gts": "^7.0.0",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "typescript-eslint": "^8.53.1"
   }
 }
