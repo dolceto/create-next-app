@@ -30,7 +30,6 @@
     "@types/styled-components": "^5.1.36",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "babel-plugin-styled-components": "^2.1.4",
-    "gts": "^7.0.0",
     "husky": "^8.0.0",
     "only-allow": "^1.2.2",
     "typescript-eslint": "^8.53.1"
