@@ -8,16 +8,26 @@ Next.js 16 + TypeScript + styled-components 보일러플레이트
 |------|------|
 | Framework | Next.js 16 (Pages Router) |
 | Language | TypeScript 5.9 |
+| Runtime | Node.js 25.2.1 |
 | Styling | styled-components 6 |
-| Linting | ESLint 9 (Flat Config) |
+| Linting | ESLint 9 (Flat Config), typescript-eslint |
 | Formatting | Prettier |
 | Git Hooks | Husky, Commitlint |
-| Package Manager | pnpm (필수) |
+| Package Manager | pnpm 10.28.0 (필수) |
 
 ## 시작하기
 
 ```bash
+# Node 버전 확인 (nvm 사용 시)
+nvm use
+
+# 의존성 설치
 pnpm install
+
+# 환경변수 설정
+cp .env.example .env.local
+
+# 개발 서버 실행
 pnpm dev
 ```
 
@@ -44,10 +54,13 @@ http://localhost:3000 에서 확인
 │   ├── _app.tsx         # 앱 진입점 (테마, 글로벌 스타일)
 │   ├── _document.tsx    # HTML 문서 (SSR 설정)
 │   └── index.tsx        # 메인 페이지
+├── public/              # 정적 파일 (이미지, 폰트 등)
 ├── styles/              # 스타일 설정
 │   ├── global-styles.ts # 글로벌 스타일
 │   ├── styled.d.ts      # 테마 타입 정의
 │   └── theme.ts         # 테마 설정
+├── .env.example         # 환경변수 템플릿
+├── .nvmrc               # Node 버전
 ├── eslint.config.mjs    # ESLint 9 설정
 ├── commitlint.config.js # 커밋 메시지 규칙
 └── package.json
