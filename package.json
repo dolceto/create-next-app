@@ -2,7 +2,9 @@
   "name": "next-boilerplate",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -33,6 +35,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "gts": "^7.0.0",
     "husky": "^8.0.0",
+    "only-allow": "^1.2.2",
     "typescript-eslint": "^8.53.1"
   }
 }
