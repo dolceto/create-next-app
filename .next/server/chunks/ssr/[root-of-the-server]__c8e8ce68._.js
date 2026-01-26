@@ -1,3 +1,0 @@
-module.exports=[5904,(a,b,c)=>{b.exports=a.x("styled-normalize-7c0305be08242dd3",()=>require("styled-normalize-7c0305be08242dd3"))},7298,a=>{"use strict";var b=a.i(8171),c=a.i(9921),d=a.i(5904);let e=(0,c.createGlobalStyle)(["",""],d.normalize),f={colors:{primary:"#007bff",secondary:"#6c757d",background:"#ffffff",text:"#212529",border:"#dee2e6"},fonts:{body:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'},spacing:{xs:"4px",sm:"8px",md:"16px",lg:"24px",xl:"32px"}};a.s(["default",0,function({Component:a,pageProps:d}){return(0,b.jsxs)(c.ThemeProvider,{theme:f,children:[(0,b.jsx)(e,{}),(0,b.jsx)(a,{...d})]})}],7298)}];
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__c8e8ce68._.js.map
