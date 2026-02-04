@@ -14,24 +14,35 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
     "next": "^16.1.4",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "styled-components": "^6.1.18",
-    "styled-normalize": "^8.1.1",
-    "typescript": "^5.9.3"
+    "styled-normalize": "^8.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@eslint/js": "^9.39.2",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
     "@types/styled-components": "^5.1.36",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
-    "babel-plugin-styled-components": "^2.1.4",
+    "eslint-config-prettier": "^10.1.5",
     "husky": "^8.0.0",
+    "lint-staged": "^16.1.0",
     "only-allow": "^1.2.2",
+    "prettier": "^3.5.3",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --max-warnings 0",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   }
 }
