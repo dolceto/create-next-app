@@ -4,20 +4,20 @@ Next.js 16 + TypeScript + styled-components 보일러플레이트
 
 ## 기술 스택
 
-| 분류            | 기술                                      |
-| --------------- | ----------------------------------------- |
-| Framework       | Next.js 16 (Pages Router)                 |
-| Language        | TypeScript 5.9                            |
-| Runtime         | Node.js 24 LTS                            |
-| UI Library      | React 19                                  |
-| Compiler        | SWC (styled-components 지원)              |
-| Styling         | styled-components 6, styled-normalize     |
-| Validation      | Zod                                       |
-| Testing         | Vitest, Testing Library                   |
-| Linting         | ESLint 9 (Flat Config), typescript-eslint |
-| Formatting      | Prettier                                  |
-| Git Hooks       | Husky, Commitlint, lint-staged            |
-| Package Manager | pnpm 10.28.0 (필수)                       |
+| 분류            | 기술                                                                             |
+| --------------- | -------------------------------------------------------------------------------- |
+| Framework       | Next.js 16 (Pages Router)                                                        |
+| Language        | TypeScript 5.9                                                                   |
+| Runtime         | Node.js 24 LTS                                                                   |
+| UI Library      | React 19                                                                         |
+| Compiler        | SWC (styled-components 지원)                                                     |
+| Styling         | styled-components 6, styled-normalize                                            |
+| Validation      | Zod                                                                              |
+| Testing         | Vitest, Testing Library                                                          |
+| Linting         | ESLint 9 (Flat Config), typescript-eslint, react-hooks, @next/eslint-plugin-next |
+| Formatting      | Prettier                                                                         |
+| Git Hooks       | Husky, Commitlint, lint-staged                                                   |
+| Package Manager | pnpm 10.28.0 (필수)                                                              |
 
 ## Pages Router를 사용하는 이유
 
@@ -57,12 +57,17 @@ http://localhost:3000 에서 확인
 | `pnpm lint`          | 린트 검사            |
 | `pnpm lint:fix`      | 린트 자동 수정       |
 | `pnpm format`        | Prettier 포맷팅      |
-| `pnpm test`          | 테스트 실행 (watch)  |
+| `pnpm typecheck`     | 타입 검사            |
+| `pnpm test`          | 테스트 실행 (1회)    |
+| `pnpm test:watch`    | 테스트 실행 (watch)  |
 | `pnpm test:coverage` | 커버리지 리포트 생성 |
 
 ## 디렉토리 구조
 
 ```
+├── .github/
+│   └── workflows/
+│       └── ci.yml           # CI (lint, typecheck, test, build)
 ├── .husky/                  # Git Hooks 설정
 │   ├── pre-commit           # 커밋 전 lint 실행
 │   └── commit-msg           # 커밋 메시지 검증
@@ -109,7 +114,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```typescript
 // lib/env.ts
 const envSchema = z.object({
-  NEXT_PUBLIC_APP_URL: z.string().url(),
+  NEXT_PUBLIC_APP_URL: z.url(),
   // 여기에 추가
 });
 ```

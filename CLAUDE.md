@@ -22,6 +22,14 @@ pnpm lint:fix
 
 # 코드 포맷팅
 pnpm format
+
+# 타입 검사
+pnpm typecheck
+
+# 테스트 (1회 실행 / watch / 커버리지)
+pnpm test
+pnpm test:watch
+pnpm test:coverage
 ```
 
 ## 아키텍처
@@ -47,6 +55,7 @@ pnpm format
 ## 코드 스타일
 
 - **ESLint 9 Flat Config** + **eslint-config-prettier** (`eslint.config.mjs`)
+- **eslint-plugin-react-hooks** + **@next/eslint-plugin-next** (core-web-vitals) 적용
 - `@typescript-eslint/no-unused-vars`: `^_` 패턴 허용
 - `@typescript-eslint/no-explicit-any`: 경고
 - **Prettier**: singleQuote, bracketSpacing: false
